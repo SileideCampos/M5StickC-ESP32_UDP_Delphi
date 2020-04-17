@@ -2,11 +2,12 @@
 #include <WiFi.h>
 #include <WiFiUdp.h>
 
-const char* ssid = "dlink-261E";
-const char* senha = "fmqzd20809";
+const char* ssid = "colocar-o-nome-da-sua-rede";
+const char* senha = "colocar-senha-da-sua-rede";
 unsigned int localPort = 8888;
 char pacote[10];
 
+//separado com vírgula mesmo!
 IPAddress ip(192,168,0,202);
 IPAddress gateway(192,168,0,1);
 IPAddress subnet(255,255,255,0);
@@ -50,12 +51,11 @@ void loop() {
     conexao.read(pacote, 5);
     Serial.println(pacote);
     M5.Lcd.println(pacote);
-    //if (String(pacote).indexOf("DW10H")>=0){
+    
     if (strcmp("DW10H", pacote) == 0){
       digitalWrite(10, HIGH);
       Serial.println("Desligado");
       M5.Lcd.println("Desligado");
-    //}else if (String(pacote).indexOf("DW10L")>=0){
     }else if (strcmp("DW10L", pacote) == 0 ){
       digitalWrite(10, LOW);
       Serial.println("Ligado");
