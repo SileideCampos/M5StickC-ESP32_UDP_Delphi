@@ -34,6 +34,7 @@ void setup() {
   
   while(WiFi.waitForConnectResult() != WL_CONNECTED){
     Serial.println("Conexao Falhou!");
+    WiFi.begin(ssid, senha); 
     delay(100);
   }
   Serial.print("IP: ");
